@@ -13,11 +13,12 @@ module.exports = {
   },
   module: {
     loaders: [{
-      exclude: /node_modules/,
-      loader: 'babel',
+      loader: 'babel-loader',
       query: {
         presets: ['react', 'es2015', 'stage-1']
-      }
+      },
+      test: /\.jsx?$/,
+      exclude: /node_modules/
     },
     { 
       test: /\.(png|woff|woff2|eot|ttf|svg)$/, 
@@ -31,7 +32,8 @@ module.exports = {
       SearchBar: 'src/components/SearchBar',
       VideoList: 'src/components/VideoList',
       VideoListItem: 'src/components/VideoListItem',
-      VideoDetail: 'src/components/VideoDetail'
+      VideoDetail: 'src/components/VideoDetail',
+      applicationStyles: 'src/style/style.scss'
     },
     extensions: ['', '.js', '.jsx']
   },

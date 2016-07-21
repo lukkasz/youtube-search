@@ -11,6 +11,9 @@ const API_KEY = 'AIzaSyBIRoFoz-4oJuhA9Nmpr3om7JMAh9wI91A';
 //Load bootstrap css
 require('style!css!bootstrap/dist/css/bootstrap.min.css');
 
+//Load Custom App Style
+import 'style!css!sass!applicationStyles';
+
 class App extends Component {
   
   constructor(props) {
