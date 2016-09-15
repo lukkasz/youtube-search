@@ -4,13 +4,18 @@ var webpack = require('webpack');
 
 module.exports = {
   entry: [
-    './src/index.js'
+    './src/index.jsx'
   ],
   output: {
     path: __dirname,
     publicPath: '/',
     filename: 'bundle.js'
   },
+  plugins: [
+    new webpack.optimize.UglifyJsPlugin({
+      compress: { warnings: false }
+    })
+  ],
   module: {
     loaders: [{
       loader: 'babel-loader',
@@ -29,6 +34,7 @@ module.exports = {
   resolve: {
     root: path.resolve(__dirname),
     alias: {
+      Header: 'src/components/Header',
       SearchBar: 'src/components/SearchBar',
       VideoList: 'src/components/VideoList',
       VideoListItem: 'src/components/VideoListItem',

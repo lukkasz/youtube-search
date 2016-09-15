@@ -2,7 +2,8 @@ import _ from 'lodash';
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import YTSearch from 'youtube-api-search';
-import SearchBar from 'SearchBar';
+//import SearchBar from 'SearchBar';
+import Header from 'Header';
 import VideoList from 'VideoList';
 import VideoDetail from 'VideoDetail';
 
@@ -24,8 +25,11 @@ class App extends Component {
       selectedVideo: null
     };
     
-    this.handleVideoSearch('surfboard');
-    
+  }
+  
+  componentDidMount() {
+    this.handleVideoSearch('javascript');
+    this.debounceVideoSearch;
   }
   
   handleVideoSearch(term){
@@ -37,18 +41,20 @@ class App extends Component {
     });
   }
   
+  handleVideoSelect = (selectedVideo) => {this.setState({ selectedVideo })}
+  
+  debounceVideoSearch =  _.debounce((term) => {this.handleVideoSearch(term)}, 500)
+  
+  
   render() {
-    const videoSearch = _.debounce((term) => {this.handleVideoSearch(term)}, 500);
+    //const videoSearch = _.debounce((term) => {this.handleVideoSearch(term)}, 500);
     
     return (
       <div>
-        <SearchBar onVideoSearchChange={videoSearch} />
+        <Header onVideoSearchChange={this.debounceVideoSearch} />
         <VideoDetail video={this.state.selectedVideo} />
         <VideoList 
-          onVideoSelect={ selectedVideo => { 
-          console.log("selected video:")
-          console.log(selectedVideo);
-          this.setState({selectedVideo}) }}
+          onVideoSelect={this.handleVideoSelect}
           videos={this.state.videos}
           />
       </div>  
@@ -56,4 +62,4 @@ class App extends Component {
   }
 }
 
-ReactDOM.render(<App />, document.querySelector('.container'));
+ReactDOM.render(<App />, document.querySelector('.app'));

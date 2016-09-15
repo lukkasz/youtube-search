@@ -1,10 +1,11 @@
 {
   "name": "youtube-search",
   "version": "1.0.0",
-  "description": "Youtube Search with React and Babel support",
-  "main": "index.js",
+  "description": "Youtube Search",
+  "main": "./src/index.jsx",
   "scripts": {
-    "start": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --host $IP --port $PORT"
+    "start": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
+    "start-c9": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --host $IP --port $PORT"
   },
   "author": "lukkasz",
   "license": "ISC",

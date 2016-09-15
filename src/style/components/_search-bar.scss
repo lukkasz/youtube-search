@@ -1,10 +1,14 @@
 .search-bar {
-  
+  display: inline-block;
+  width: 80%;
   margin: 20px;
   text-align: center;
   
-  & input {
-    width: 75%;
+  & .form-control {
+    padding: 5px 10px;
+    font-size: 30px;
+    width: 100%;
+    height: auto;
   }
   
 }
